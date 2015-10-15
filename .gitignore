@@ -1,0 +1,10 @@
+bin/
+obj/
+*.suo
+logs/
+Backup/
+packages/*/
+.tss
+artifacts/
+/.vs
+Thumbs.db
