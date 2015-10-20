@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DDD.Sample.Domain.IRepository
 {
-    public interface IStudentRepository : IRepository<Student>
+    public interface IRepository<TAggregateRoot> 
+        where TAggregateRoot : class, IAggregateRoot
     {
-        Student GetByName(string name);
+        TAggregateRoot Get(int id);
     }
 }

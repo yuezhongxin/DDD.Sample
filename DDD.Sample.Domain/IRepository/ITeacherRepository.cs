@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace DDD.Sample.Domain.IRepository
 {
-    public interface ITeacherRepository
+    public interface ITeacherRepository : IRepository<Teacher>
     {
-        Teacher Get(int id);
     }
 }

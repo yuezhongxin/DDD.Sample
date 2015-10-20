@@ -35,6 +35,7 @@ namespace DDD.Sample.Tests
         {
             var student = _studentService.Get(1);
             Assert.NotNull(student);
+            Console.WriteLine(student.Name);
         }
 
         [Fact]

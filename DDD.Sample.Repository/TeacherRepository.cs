@@ -9,18 +9,11 @@ using System.Threading.Tasks;
 
 namespace DDD.Sample.Repository
 {
-    public class TeacherRepository : ITeacherRepository
+    public class TeacherRepository : BaseRepository<Teacher>, ITeacherRepository
     {
-        private IQueryable<Teacher> _teachers;
-
         public TeacherRepository(IDbContext dbContext)
+            : base(dbContext)
         {
-            _teachers = dbContext.Set<Teacher>();
-        }
-
-        public Teacher Get(int id)
-        {
-            return _teachers.Where(x => x.Id == id).FirstOrDefault();
         }
     }
 }

@@ -43,6 +43,7 @@
     <Compile Include="Entity\Teacher.cs" />
     <Compile Include="IAggregateRoot.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="IRepository\IRepository.cs" />
     <Compile Include="IRepository\ITeacherRepository.cs" />
     <Compile Include="IRepository\IStudentRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
