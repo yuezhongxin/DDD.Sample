@@ -41,7 +41,7 @@ namespace DDD.Sample.Tests
         [Fact]
         public void AddTest()
         {
-            var result = _studentService.Add("xishuai");
+            var result = _studentService.Add("xishuai2");
             Assert.True(result);
         }
     }

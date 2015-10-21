@@ -56,6 +56,14 @@
       <Project>{309d06b6-47e1-4a62-a5d5-931b28d7ff98}</Project>
       <Name>DDD.Sample.Infrastructure.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DDD.Sample.Infrastructure\DDD.Sample.Infrastructure.csproj">
+      <Project>{7716595b-f7b2-4abd-b288-869c2dab8c05}</Project>
+      <Name>DDD.Sample.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DDD.Sample.Repository\DDD.Sample.Repository.csproj">
+      <Project>{3af1c1ba-06c8-4e52-b275-c04cb0b08724}</Project>
+      <Name>DDD.Sample.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
