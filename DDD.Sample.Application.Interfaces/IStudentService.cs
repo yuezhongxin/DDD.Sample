@@ -12,5 +12,7 @@ namespace DDD.Sample.Application.Interfaces
         Task<Student> Get(int id);
 
         Task<bool> Add(string name);
+
+        Task<bool> UpdateName(int id, string name);
     }
 }

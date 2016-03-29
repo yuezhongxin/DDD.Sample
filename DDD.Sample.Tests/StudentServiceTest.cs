@@ -44,5 +44,12 @@ namespace DDD.Sample.Tests
             var result = await _studentService.Add("xishuai3");
             Assert.True(result);
         }
+
+        [Fact]
+        public async Task UpdateNameTest()
+        {
+            var result = await _studentService.UpdateName(1, "xishuai");
+            Assert.True(result);
+        }
     }
 }

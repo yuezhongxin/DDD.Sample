@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using EntityFramework.Extensions;
 
 namespace DDD.Sample.Application
 {
@@ -42,6 +43,12 @@ namespace DDD.Sample.Application
             _unitOfWork.RegisterNew(student);
             _unitOfWork.RegisterDirty(teacher);
             return await _unitOfWork.CommitAsync();
+        }
+
+        public async Task<bool> UpdateName(int id, string name)
+        {
+            return await _studentRepository.Get(id)
+                .UpdateAsync(x => new Student { Name = name }) > 0;
         }
     }
 }
