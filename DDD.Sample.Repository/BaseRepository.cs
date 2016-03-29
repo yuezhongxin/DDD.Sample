@@ -13,31 +13,21 @@ namespace DDD.Sample.Repository
     public abstract class BaseRepository<TAggregateRoot> : IRepository<TAggregateRoot>
         where TAggregateRoot : class, IAggregateRoot
     {
-        public readonly IDbContext _dbContext;
+        public readonly IQueryable<TAggregateRoot> _entities;
 
         public BaseRepository(IDbContext dbContext)
         {
-            _dbContext = dbContext;
+            _entities = dbContext.Set<TAggregateRoot>();
         }
 
-        public void Add(TAggregateRoot aggregateRoot)
+        public IQueryable<TAggregateRoot> Get(int id)
         {
-            _dbContext.Set<TAggregateRoot>().Add(aggregateRoot);
+            return _entities.Where(t => t.Id == id);
         }
 
-        public void Update(TAggregateRoot aggregateRoot)
+        public IQueryable<TAggregateRoot> GetAll()
         {
-            _dbContext.Entry<TAggregateRoot>(aggregateRoot).State = EntityState.Modified;
-        }
-
-        public void Delete(TAggregateRoot aggregateRoot)
-        {
-            _dbContext.Set<TAggregateRoot>().Remove(aggregateRoot);
-        }
-
-        public TAggregateRoot Get(int id)
-        {
-            return _dbContext.Set<TAggregateRoot>().FirstOrDefault(t => t.Id == id);
+            return _entities;
         }
     }
 }

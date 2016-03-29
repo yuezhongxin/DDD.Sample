@@ -8,6 +8,6 @@ namespace DDD.Sample.Domain.IRepository
 {
     public interface IStudentRepository : IRepository<Student>
     {
-        Student GetByName(string name);
+        IQueryable<Student> GetByName(string name);
     }
 }

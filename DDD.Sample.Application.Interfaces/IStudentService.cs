@@ -9,8 +9,8 @@ namespace DDD.Sample.Application.Interfaces
 {
     public interface IStudentService
     {
-        Student Get(int id);
+        Task<Student> Get(int id);
 
-        bool Add(string name);
+        Task<bool> Add(string name);
     }
 }

@@ -17,6 +17,6 @@ namespace DDD.Sample.Infrastructure.Interfaces
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity)
             where TEntity : class;
 
-        int SaveChanges();
+        Task<int> SaveChangesAsync();
     }
 }

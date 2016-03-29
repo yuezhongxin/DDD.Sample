@@ -13,12 +13,11 @@ namespace DDD.Sample.Repository
     {
         public StudentRepository(IDbContext dbContext)
             : base(dbContext)
-        {
-        }
+        { }
 
-        public Student GetByName(string name)
+        public IQueryable<Student> GetByName(string name)
         {
-            return base._dbContext.Set<Student>().Where(x => x.Name == name).FirstOrDefault();
+            return _entities.Where(x => x.Name == name);
         }
     }
 }

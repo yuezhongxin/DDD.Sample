@@ -13,7 +13,6 @@ namespace DDD.Sample.Repository
     {
         public TeacherRepository(IDbContext dbContext)
             : base(dbContext)
-        {
-        }
+        { }
     }
 }

@@ -31,17 +31,17 @@ namespace DDD.Sample.Tests
         }
 
         [Fact]
-        public void GetByIdTest()
+        public async Task GetByIdTest()
         {
-            var student = _studentService.Get(1);
+            var student = await _studentService.Get(1);
             Assert.NotNull(student);
             Console.WriteLine(student.Name);
         }
 
         [Fact]
-        public void AddTest()
+        public async Task AddTest()
         {
-            var result = _studentService.Add("xishuai3");
+            var result = await _studentService.Add("xishuai3");
             Assert.True(result);
         }
     }

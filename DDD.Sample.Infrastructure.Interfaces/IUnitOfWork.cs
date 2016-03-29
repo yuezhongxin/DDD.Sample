@@ -21,7 +21,7 @@ namespace DDD.Sample.Infrastructure.Interfaces
         void RegisterDeleted<TEntity>(TEntity entity)
             where TEntity : class;
 
-        bool Commit();
+        Task<bool> CommitAsync();
 
         void Rollback();
     }

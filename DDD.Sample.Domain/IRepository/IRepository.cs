@@ -9,12 +9,8 @@ namespace DDD.Sample.Domain.IRepository
     public interface IRepository<TAggregateRoot> 
         where TAggregateRoot : class, IAggregateRoot
     {
-        void Add(TAggregateRoot aggregateRoot);
+        IQueryable<TAggregateRoot> Get(int id);
 
-        void Update(TAggregateRoot aggregateRoot);
-
-        void Delete(TAggregateRoot aggregateRoot);
-
-        TAggregateRoot Get(int id);
+        IQueryable<TAggregateRoot> GetAll();
     }
 }

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace DDD.Sample.Application
 {
@@ -27,20 +28,20 @@ namespace DDD.Sample.Application
             _teacherRepository = teacherRepository;
         }
 
-        public Student Get(int id)
+        public async Task<Student> Get(int id)
         {
-            return _studentRepository.Get(id);
+            return await _studentRepository.Get(id).FirstOrDefaultAsync();
         }
 
-        public bool Add(string name)
+        public async Task<bool> Add(string name)
         {
             var student = new Student { Name = name };
-            var teacher = _teacherRepository.Get(1);
+            var teacher = await _teacherRepository.Get(1).FirstOrDefaultAsync();
             teacher.StudentCount++;
 
             _unitOfWork.RegisterNew(student);
             _unitOfWork.RegisterDirty(teacher);
-            return _unitOfWork.Commit();
+            return await _unitOfWork.CommitAsync();
         }
     }
 }
