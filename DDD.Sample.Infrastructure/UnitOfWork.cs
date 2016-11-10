@@ -18,45 +18,67 @@ namespace DDD.Sample.Infrastructure
         public UnitOfWork(IDbContext dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        public void BeginTransaction()
+        {
             _dbTransaction = _dbContext.Database.BeginTransaction();
+        }
+
+        public async Task<int> ExecuteSqlCommandAsync(string sql, params object[] parameters)
+        {
+            return await _dbContext.Database.ExecuteSqlCommandAsync(sql, parameters);
         }
 
         public async Task<bool> RegisterNew<TEntity>(TEntity entity)
             where TEntity : class
         {
             _dbContext.Set<TEntity>().Add(entity);
-            return await _dbContext.SaveChangesAsync() > 0;
+            if (_dbTransaction != null)
+                return await _dbContext.SaveChangesAsync() > 0;
+            return true;
         }
 
         public async Task<bool> RegisterDirty<TEntity>(TEntity entity)
             where TEntity : class
         {
             _dbContext.Entry<TEntity>(entity).State = EntityState.Modified;
-            return await _dbContext.SaveChangesAsync() > 0;
+            if (_dbTransaction != null)
+                return await _dbContext.SaveChangesAsync() > 0;
+            return true;
         }
 
         public async Task<bool> RegisterClean<TEntity>(TEntity entity)
             where TEntity : class
         {
             _dbContext.Entry<TEntity>(entity).State = EntityState.Unchanged;
-            return await _dbContext.SaveChangesAsync() > 0;
+            if (_dbTransaction != null)
+                return await _dbContext.SaveChangesAsync() > 0;
+            return true;
         }
 
         public async Task<bool> RegisterDeleted<TEntity>(TEntity entity)
             where TEntity : class
         {
             _dbContext.Set<TEntity>().Remove(entity);
-            return await _dbContext.SaveChangesAsync() > 0;
+            if (_dbTransaction != null)
+                return await _dbContext.SaveChangesAsync() > 0;
+            return true;
         }
 
-        public void Commit()
+        public async Task<bool> CommitAsync()
         {
-            _dbTransaction.Commit();
+            if (_dbTransaction == null)
+                return await _dbContext.SaveChangesAsync() > 0;
+            else
+                _dbTransaction.Commit();
+            return true;
         }
 
         public void Rollback()
         {
-            _dbTransaction.Rollback();
+            if (_dbTransaction != null)
+                _dbTransaction.Rollback();
         }
     }
 }

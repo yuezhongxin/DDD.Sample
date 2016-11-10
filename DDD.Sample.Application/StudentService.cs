@@ -42,20 +42,22 @@ namespace DDD.Sample.Application
 
             await _unitOfWork.RegisterNew(student);
             await _unitOfWork.RegisterDirty(teacher);
-            _unitOfWork.Commit();
-            return true;
+            return await _unitOfWork.CommitAsync();
         }
 
         public async Task<bool> AddWithTransaction(string name)
         {
+            _unitOfWork.BeginTransaction();
+
             var teacher = new Teacher { Name = "teacher one" };
             await _unitOfWork.RegisterNew(teacher);
+
+            await _unitOfWork.ExecuteSqlCommandAsync("update students set name='xishuai 2'");
 
             var student = new Student { Name = name, TeacherId = teacher.Id };
             await _unitOfWork.RegisterNew(student);
 
-            _unitOfWork.Commit();
-            return true;
+            return await _unitOfWork.CommitAsync();
         }
 
         public async Task<bool> UpdateName(int id, string name)

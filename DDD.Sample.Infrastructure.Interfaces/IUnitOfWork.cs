@@ -9,6 +9,10 @@ namespace DDD.Sample.Infrastructure.Interfaces
 {
     public interface IUnitOfWork
     {
+        void BeginTransaction();
+
+        Task<int> ExecuteSqlCommandAsync(string sql, params object[] parameters);
+
         Task<bool> RegisterNew<TEntity>(TEntity entity)
             where TEntity : class;
 
@@ -21,7 +25,7 @@ namespace DDD.Sample.Infrastructure.Interfaces
         Task<bool> RegisterDeleted<TEntity>(TEntity entity)
             where TEntity : class;
 
-        void Commit();
+        Task<bool> CommitAsync();
 
         void Rollback();
     }
