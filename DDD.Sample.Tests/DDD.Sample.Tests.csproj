@@ -84,6 +84,14 @@
       <Project>{d84ae232-1504-4710-9d48-98316fdd4c0a}</Project>
       <Name>DDD.Sample.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DDD.Sample.BootStrapper\DDD.Sample.BootStrapper.csproj">
+      <Project>{0cd10ad9-3532-450a-95ed-a3b992f2166b}</Project>
+      <Name>DDD.Sample.BootStrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DDD.Sample.Domain.Repository.Interfaces\DDD.Sample.Domain.Repository.Interfaces.csproj">
+      <Project>{f1063bff-5eec-4d67-b758-7f45a498bb3c}</Project>
+      <Name>DDD.Sample.Domain.Repository.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DDD.Sample.Domain\DDD.Sample.Domain.csproj">
       <Project>{64d6322e-23c6-4bf7-bfcd-2998b1132132}</Project>
       <Name>DDD.Sample.Domain</Name>
@@ -102,7 +110,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

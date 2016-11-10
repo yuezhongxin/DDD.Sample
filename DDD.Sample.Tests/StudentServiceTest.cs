@@ -1,6 +1,6 @@
 ﻿using DDD.Sample.Application;
 using DDD.Sample.Application.Interfaces;
-using DDD.Sample.Domain.IRepository;
+using DDD.Sample.Domain.Repository.Interfaces;
 using DDD.Sample.Infrastructure;
 using DDD.Sample.Infrastructure.Interfaces;
 using DDD.Sample.Repository;
@@ -21,13 +21,15 @@ namespace DDD.Sample.Tests
         public StudentServiceTest()
         {
             var container = new UnityContainer();
-            container.RegisterType<IDbContext, SchoolDbContext>();
+            container.RegisterType<IDbContext, SchoolDbContext>();//要进行LifetimeManager配置
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<IStudentRepository, StudentRepository>();
             container.RegisterType<ITeacherRepository, TeacherRepository>();
             container.RegisterType<IStudentService, StudentService>();
 
             _studentService = container.Resolve<IStudentService>();
+
+            //DDD.Sample.BootStrapper.Startup.Configure(); 上面ioc注入可以放在Configure中
         }
 
         [Fact]
@@ -42,6 +44,13 @@ namespace DDD.Sample.Tests
         public async Task AddTest()
         {
             var result = await _studentService.Add("xishuai3");
+            Assert.True(result);
+        }
+
+        [Fact]
+        public async Task AddWithTransactionTest()
+        {
+            var result = await _studentService.AddWithTransaction("xishuai");
             Assert.True(result);
         }
 

@@ -9,19 +9,19 @@ namespace DDD.Sample.Infrastructure.Interfaces
 {
     public interface IUnitOfWork
     {
-        void RegisterNew<TEntity>(TEntity entity)
+        Task<bool> RegisterNew<TEntity>(TEntity entity)
             where TEntity : class;
 
-        void RegisterDirty<TEntity>(TEntity entity)
+        Task<bool> RegisterDirty<TEntity>(TEntity entity)
             where TEntity : class;
 
-        void RegisterClean<TEntity>(TEntity entity)
+        Task<bool> RegisterClean<TEntity>(TEntity entity)
             where TEntity : class;
 
-        void RegisterDeleted<TEntity>(TEntity entity)
+        Task<bool> RegisterDeleted<TEntity>(TEntity entity)
             where TEntity : class;
 
-        Task<bool> CommitAsync();
+        void Commit();
 
         void Rollback();
     }

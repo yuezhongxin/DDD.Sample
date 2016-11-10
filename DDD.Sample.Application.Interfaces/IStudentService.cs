@@ -13,6 +13,8 @@ namespace DDD.Sample.Application.Interfaces
 
         Task<bool> Add(string name);
 
+        Task<bool> AddWithTransaction(string name);
+
         Task<bool> UpdateName(int id, string name);
     }
 }

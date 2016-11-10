@@ -1,5 +1,5 @@
 ﻿using DDD.Sample.Domain;
-using DDD.Sample.Domain.IRepository;
+using DDD.Sample.Domain.Repository.Interfaces;
 using DDD.Sample.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;

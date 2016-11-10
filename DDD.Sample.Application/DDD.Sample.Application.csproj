@@ -61,6 +61,10 @@
       <Project>{e5bc45dc-dab2-4cc6-89d7-c06bd4f2d198}</Project>
       <Name>DDD.Sample.Application.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DDD.Sample.Domain.Repository.Interfaces\DDD.Sample.Domain.Repository.Interfaces.csproj">
+      <Project>{f1063bff-5eec-4d67-b758-7f45a498bb3c}</Project>
+      <Name>DDD.Sample.Domain.Repository.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DDD.Sample.Domain\DDD.Sample.Domain.csproj">
       <Project>{64d6322e-23c6-4bf7-bfcd-2998b1132132}</Project>
       <Name>DDD.Sample.Domain</Name>

@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3AF1C1BA-06C8-4E52-B275-C04CB0B08724}</ProjectGuid>
+    <ProjectGuid>{32976A10-F4A9-47E2-B6B4-76AC2E69179E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DDD.Sample.Repository</RootNamespace>
-    <AssemblyName>DDD.Sample.Repository</AssemblyName>
+    <RootNamespace>DDD.Sample.Domain.DomainServices</RootNamespace>
+    <AssemblyName>DDD.Sample.Domain.DomainServices</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,16 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,27 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BaseRepository.cs" />
-    <Compile Include="TeacherRepository.cs" />
-    <Compile Include="StudentRepository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DDD.Sample.Domain.Repository.Interfaces\DDD.Sample.Domain.Repository.Interfaces.csproj">
-      <Project>{f1063bff-5eec-4d67-b758-7f45a498bb3c}</Project>
-      <Name>DDD.Sample.Domain.Repository.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DDD.Sample.Domain\DDD.Sample.Domain.csproj">
-      <Project>{64d6322e-23c6-4bf7-bfcd-2998b1132132}</Project>
-      <Name>DDD.Sample.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DDD.Sample.Infrastructure.Interfaces\DDD.Sample.Infrastructure.Interfaces.csproj">
-      <Project>{309d06b6-47e1-4a62-a5d5-931b28d7ff98}</Project>
-      <Name>DDD.Sample.Infrastructure.Interfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
